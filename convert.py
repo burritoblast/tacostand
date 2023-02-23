@@ -1,10 +1,5 @@
 import sys
 
-def test_conversion_functions():
-    assert inches_to_mm(1) == 25.4
-    assert inches_to_cm(1) == 2.54
-    assert inches_to_m(1) == 0.0254
-
 def inches_to_mm(inches):
     return inches * 25.4
 
@@ -14,5 +9,25 @@ def inches_to_cm(inches):
 def inches_to_m(inches):
     return inches * 0.0254
 
-if '-t' in sys.argv:
-    test_conversion_functions()
+def test_conversions():
+    assert inches_to_mm(1) == 25.4
+    assert inches_to_cm(1) == 2.54
+    assert inches_to_m(1) == 0.0254
+    assert inches_to_mm(2.5) == 63.5
+    assert inches_to_cm(5.5) == 13.97
+    assert inches_to_m(10) == 0.254
+
+if __name__ == '__main__':
+    if '-t' in sys.argv:
+        test_conversions()
+    else:
+        value = float(input("Enter the value to be converted (inches): "))
+        unit = input("Enter the desired output unit (mm, cm, m): ")
+        if unit == 'mm':
+            print(f"{value} inches is {inches_to_mm(value)} millimeters")
+        elif unit == 'cm':
+            print(f"{value} inches is {inches_to_cm(value)} centimeters")
+        elif unit == 'm':
+            print(f"{value} inches is {inches_to_m(value)} meters")
+        else:
+            print("Invalid unit specified. Please try again.")
