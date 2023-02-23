@@ -21,8 +21,8 @@ if __name__ == '__main__':
     if '-t' in sys.argv:
         test_conversions()
     else:
-        value = float(input("Enter the value to be converted (inches): "))
-        unit = input("Enter the desired output unit (mm, cm, m): ")
+        value = float(input("Enter the value to be converted from inches: "))
+        unit = input("What unit of measurement would you like to convert it to? (mm, cm, m): ")
         if unit == 'mm':
             print(f"{value} inches is {inches_to_mm(value)} millimeters")
         elif unit == 'cm':
